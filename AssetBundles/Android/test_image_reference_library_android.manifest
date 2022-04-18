@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2528347385
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 497b922e32952e8fd57345ca3242382f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: dbc4c196e290b0d97d76d2540eb3dad7
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetsToBundle/editor/test_image_reference_library.asset
+Dependencies: []

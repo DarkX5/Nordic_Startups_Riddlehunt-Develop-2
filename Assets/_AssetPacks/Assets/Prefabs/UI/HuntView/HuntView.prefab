@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1880799894222610919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880799894222610936}
+  - component: {fileID: 1880799894222610937}
+  m_Layer: 5
+  m_Name: HuntView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1880799894222610936
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880799894222610919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1880799894222610937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880799894222610919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60ef60e8c2e3b746816a97e412f9097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabComponentPrefab: {fileID: 7796690087401422104, guid: 0670a703a01b35a4aab6cc13ff72db42, type: 3}
+  storyComponentPrefab: {fileID: 4358554292470295454, guid: 6e5d22e0bdeef2f45abaef9b56ce007f, type: 3}
+  riddleTabComponentPrefab: {fileID: 8562899990898009639, guid: 9d14ca2e01f8c5c46a32e31ec448ee16, type: 3}
+  huntHomeComponentPrefab: {fileID: 6966140760160102920, guid: e06fa057d7be931408d131752d609b03, type: 3}
+  screeningCorrectPanelPrefab: {fileID: 7874918908544300387, guid: 1e2b138390d88574cace1454e5f94d8e, type: 3}
+  endScreenPanelPrefab: {fileID: 7303253782200704443, guid: e6207cb3d79867942817a8d719355431, type: 3}
+  ratingComponentPrefab: {fileID: 5033285046188777001, guid: fe10e77ef25978b4a9284af4199152a1, type: 3}
+  resolutionComponentPrefab: {fileID: 2714046363925975546, guid: f9684c5d30f84254186821dfaa6794b9, type: 3}

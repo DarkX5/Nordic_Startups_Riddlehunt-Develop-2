@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Sprint1 Scene.unity
+    guid: 651a3765102fa4b22875f0745809291f
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Startup.unity
+    guid: f7b46782fbef3ae42b94434f91f7ac6f
+  - enabled: 0
+    path: Assets/Scenes/Start.unity
+    guid: 39065937432e741859705b2822a314f4
+  - enabled: 0
+    path: Assets/Scenes/UITestScenes/MultipleChoiceAnswerComponent.unity
+    guid: 4ea784b18b30e574bab688aae716e497
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/TermsFlow.unity
+    guid: 80d9bb91632c3e44980842350b8a333e
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/SimpleVideoView.unity
+    guid: 96109d68f72bad0429c56ca3f26b7b2f
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/VideoBasedRiddleViewDemo.unity
+    guid: c622fd23c2e20cd4da99f9e66169cb96
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/BetaTesterView.unity
+    guid: 4140b858e7a273749aac663419ba896e
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/WebviewDemo.unity
+    guid: 558c9a894bd7f6143a9047d9088d0cb7
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/LoginWebviewDemo.unity
+    guid: fa87de7908288654c9aa4d732a74aee1
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/ProductIntroView.unity
+    guid: 5022b69fc3998054c810ac8c3a9254d9
+  - enabled: 0
+    path: Assets/Scenes/ViewScenes/CharacterSelectionDemo.unity
+    guid: 199f8cfdb3b0f5647a1645c4ba51aa17
+  - enabled: 0
+    path: Assets/Scenes/Riddlehouse2DMapScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Mapbox/Examples/2_AstronautGame/AstronautGame.unity
+    guid: 23b3522d4f6fa450eb781397db4b26ed
+  - enabled: 0
+    path: Assets/Mapbox/Examples/6_ZoomableMap/ZoomableMap.unity
+    guid: 2c7147d54825142878b256c67aae5704
+  - enabled: 0
+    path: Assets/Mapbox/Examples/3_POIPlacement/POIPlacement.unity
+    guid: c600a8b272a5846a1b71bdc2d0796637
+  - enabled: 0
+    path: Assets/Mapbox/Examples/0_PrefabScenes/Location-basedGame.unity
+    guid: 42f6aa7ce7a604f16ade319663f46ceb
+  - enabled: 0
+    path: Assets/Scenes/Maps/Mapbox.unity
+    guid: d6e502c4f05f3bf40bfbdd9da28af88a
+  - enabled: 0
+    path: Assets/RHPackages/WispContainerAnswerViews/Demo/WispContainerAnswerViewDemo.unity
+    guid: 28c4ddd42e71e124daa4b400e08d7657
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d302e1c814c712e4eaf8b5fedcd723cf, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 9cdc8d216a7335241820587b52d6fcff, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: c32897edddc87404c9ee0ce6981ef927, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2669ea907ac78964eacbad970f39813f, type: 2}

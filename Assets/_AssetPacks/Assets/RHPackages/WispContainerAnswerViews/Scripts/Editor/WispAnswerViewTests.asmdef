@@ -1,0 +1,24 @@
+{
+    "name": "WispAnswerViewTests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5d2c2dbdd07688847ac81ff5fa84c79c",
+        "GUID:0db7c9acfa0a9f14ab84d11f1dd7be45",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "moq.dll",
+        "nunit.framework.dll",
+        "riddlehouse-libraries.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

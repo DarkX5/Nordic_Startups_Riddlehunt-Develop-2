@@ -1,0 +1,59 @@
+Riddlehouse Test:
+Create a narrator as a plugin to be used in the resolution step.
+Acceptance criteria:
+Create a 2d, text driven animated narrator.
+The narrator & animation should function as in the following video: 
+https://youtu.be/ZVh4nH8Mayg?t=28
+NOTE: do not make a bouncing animation on the textcontainer itself. Leave the textbox static.
+
+The narrator should be it’s own prefab seperated from the textbox with the animated text.
+The textbox should be it’s own prefab as well.
+Both the Narrator and the textbox should be in their own context, with their own monobehaviours (if needed.)
+
+Make a Monobehaviour/Unity Component (AnimatedNarratorController) that holds a reference to the animated Narrator Prefab, and a reference to the animated text prefab.
+Make a configure function that takes a List of strings (each string is a paragraph to be shown); and a float for text animation speed.
+Animator Example Flow:
+Data: [
+”paragraph 1”,
+”another paragraph 2”,
+”a third paragraph”
+]
+When the narrator is displayed on screen, it should start animating the first paragraph; once done, it should wait for the user to tap the textbox, once tapped it should start animating the second paragraph.
+
+This loop completes until the last paragraph has been displayed.
+
+When the last paragraph is displayed, two buttons should show up, one “understood” and another “Play again.”
+if “play again” is pressed, the narrator should start from scratch.
+if “understood” is pressed, the narrator should hide.
+
+For display and hide, setting the gameobject active and inactive, is acceptable.
+
+All public methods should be added to a narrator interface.
+Please include a demo scene with a demo script, showing how to instantiate, configure and display the narrator.
+
+For the environment.
+Unity 3.6.1f1 from unity's download archive, when installing - if on a windows, be sure to include the android build tools in the installer.
+
+if on a mac, be sure to include both Android and iOS build tools.
+
+on a mac, also make sure to have the latest xCode installed.
+
+For android, we are using API Level 30 as our target, but you gotta make sure that your SDK installation holds platform tools for android 7 up to android 11. I did this in the command line after installing the tools via. unity's installer.
+
+The command I used on windows is: ~/SDK/tools/bin/sdkmanager.bat "platforms;android-30" 
+the ";android-x" can be used to get specific platform toolsets if you should be missing it. I think you just need 30 to build to all the versions below.
+
+You might need to install the Java NDK manually, depending on how unity behaves on your machine, if you need to do so, you can do it via. unity, in "Edit->Preferences->External-tools" this is also where you can see where unity installs the SDK and the openJDK. If you already have these installed, this is where you can reference their path instead  
+
+if you don't have the NDK there will be a button here to install and set it up  
+
+
+Outside of that, all you should need to do is to installer Rider Jetbrains or visual studio, and choose the program you'd like to use, you do this in "external tools" as well 
+
+
+
+https://docs.unity3d.com/540/Documentation/Manual/android-sdksetup.html
+
+Delivery method:
+Please send a zip file with the modified code which includes the above task.
+  riddlehunt-develop-2.zip 

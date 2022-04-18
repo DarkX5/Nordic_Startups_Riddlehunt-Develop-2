@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: test_image_reference_library
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4784411349813056196
+  m_GuidHigh: 2133919526024540828
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5489655776406382554
+      m_GuidHigh: 8042542554624002978
+    m_SerializedTextureGuid:
+      m_GuidLow: 240073020392960018
+      m_GuidHigh: 11166566985421608136
+    m_Size: {x: 1, y: 1.3333334}
+    m_SpecifySize: 1
+    m_Name: Kineser
+    m_Texture: {fileID: 2800000, guid: dcad7012e9230354c8d4a89e829df79a, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4664930462835012657
+      m_GuidHigh: 1235912775685589682
+    m_SerializedTextureGuid:
+      m_GuidLow: 15394688669651918961
+      m_GuidHigh: 13378164535403467434
+    m_Size: {x: 0.37966102, y: 0.4}
+    m_SpecifySize: 1
+    m_Name: plkat
+    m_Texture: {fileID: 2800000, guid: ce556071ebc7d5a4aad273afc3c9a8b9, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4729901904490668846
+      m_GuidHigh: 7524012935717747862
+    m_SerializedTextureGuid:
+      m_GuidLow: 4734414743457935287
+      m_GuidHigh: 3519330495946245048
+    m_Size: {x: 0.8093333, y: 2}
+    m_SpecifySize: 1
+    m_Name: pylon_small
+    m_Texture: {fileID: 2800000, guid: 0b2eafb7052041b4b843139a702cd730, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5205927716312349272
+      m_GuidHigh: 13290381554330481066
+    m_SerializedTextureGuid:
+      m_GuidLow: 16718590678315387206
+      m_GuidHigh: 14290726872175040122
+    m_Size: {x: 2.5, y: 1.0121951}
+    m_SpecifySize: 1
+    m_Name: rebus_low_nobackground
+    m_Texture: {fileID: 2800000, guid: 9e2549465da4e8047a561fee5fdc52c6, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5588387994297852498
+      m_GuidHigh: 1755504480536345011
+    m_SerializedTextureGuid:
+      m_GuidLow: 16678228943662174257
+      m_GuidHigh: 3717809950806190923
+    m_Size: {x: 2.5, y: 1.0121951}
+    m_SpecifySize: 1
+    m_Name: rebus_nobackground
+    m_Texture: {fileID: 2800000, guid: f59f5031f8dbe7744b2b37d473509833, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4770660452549914512
+      m_GuidHigh: 9327006743850734514
+    m_SerializedTextureGuid:
+      m_GuidLow: 7517778434300112986
+      m_GuidHigh: 15695739118277110984
+    m_Size: {x: 1.0344827, y: 1}
+    m_SpecifySize: 1
+    m_Name: Svane_cropped
+    m_Texture: {fileID: 2800000, guid: b48cf05a83a76854c82c1c889177d2d9, type: 3}

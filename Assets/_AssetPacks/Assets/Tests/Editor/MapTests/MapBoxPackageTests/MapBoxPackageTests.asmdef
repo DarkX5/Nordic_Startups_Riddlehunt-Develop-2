@@ -1,0 +1,19 @@
+{
+    "name": "MapBoxPackageTests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f3bd0ebce343dc34eb8af2cc46b67a0d",
+        "GUID:1a9d5105a7761a948b5aaa7212090b7a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,27 @@
+{
+    "name": "MapBoxUnityEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b346714d9cbaa7943abd4bd5c765075b",
+        "GUID:f3bd0ebce343dc34eb8af2cc46b67a0d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Mapbox.VectorTile.ExtensionMethods.dll",
+        "Mapbox.VectorTile.PbfReader.dll",
+        "Mapbox.VectorTile.Geometry.dll",
+        "Mapbox.VectorTile.VectorTileReader.dll",
+        "Mapbox.IO.Compression.dll",
+        "Mapbox.Json.dll",
+        "MapboxAccountsUnity.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,11 @@
+Hi Friend,
+
+this folder (Resources/editor) contains assets that need to be loaded at "test-time".
+
+the resource folder is normally built INTO the deployment of an application, but the editor folder STRIPS these assets from the build.
+
+The assets located here are intended for use with the TESTS in the EDITOR.
+
+
+Last updated: 09/07-2021.
+Updated by: Philip Haugaard.

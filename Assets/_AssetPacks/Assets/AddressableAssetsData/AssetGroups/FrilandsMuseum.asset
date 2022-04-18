@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: FrilandsMuseum
+  m_EditorClassIdentifier: 
+  m_GroupName: FrilandsMuseum
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 67a3da4a0ab6e1440a4524e2db38b533
+  m_SerializeEntries:
+  - m_GUID: e3d899f82a90dac4b98fff4fd31f4820
+    m_Address: Assets/RHPackages/DemoHuntFrilandsMuseum/Prefabs/MapCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Frilandsmuseet
+    m_MainAsset: {fileID: 3499055239774645155, guid: e3d899f82a90dac4b98fff4fd31f4820, type: 3}
+    m_TargetAsset: {fileID: 3499055239774645155, guid: e3d899f82a90dac4b98fff4fd31f4820, type: 3}
+  - m_GUID: e49c72a106234a544ad9ea765761b956
+    m_Address: Assets/RHPackages/DemoHuntFrilandsMuseum/Prefabs/POI/POI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Frilandsmuseet
+    m_MainAsset: {fileID: 7281471024253791033, guid: e49c72a106234a544ad9ea765761b956, type: 3}
+    m_TargetAsset: {fileID: 7281471024253791033, guid: e49c72a106234a544ad9ea765761b956, type: 3}
+  - m_GUID: 8711547faff15e842b51b26bd45a3698
+    m_Address: Assets/Prefabs/Map/MapBox/mapBoxPOI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Frilandsmuseet
+    m_MainAsset: {fileID: 2463196897937908302, guid: 8711547faff15e842b51b26bd45a3698, type: 3}
+    m_TargetAsset: {fileID: 2463196897937908302, guid: 8711547faff15e842b51b26bd45a3698, type: 3}
+  - m_GUID: e7cceef4280d92a4fabde5454b4ae222
+    m_Address: Assets/Prefabs/Map/MapBox/mapBoxStopPOI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Frilandsmuseet
+    m_MainAsset: {fileID: 3708442955413260663, guid: e7cceef4280d92a4fabde5454b4ae222, type: 3}
+    m_TargetAsset: {fileID: 3708442955413260663, guid: e7cceef4280d92a4fabde5454b4ae222, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 11c94751fc2048847bcffed49670c37a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 40fe91c82e5f0f340bfdf8ea6d17ca8c, type: 2}
+    - {fileID: 11400000, guid: 2836f7c42fb13ba4281d10c343a46d80, type: 2}

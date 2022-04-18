@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: RiddleView
+  m_EditorClassIdentifier: 
+  m_GroupName: RiddleView
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 784fa14c5d7879142beef7072c73b232
+  m_SerializeEntries:
+  - m_GUID: 9d14ca2e01f8c5c46a32e31ec448ee16
+    m_Address: Assets/Prefabs/UI/Riddle/RiddleTabComponent.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 7835009974958887199, guid: 9d14ca2e01f8c5c46a32e31ec448ee16, type: 3}
+    m_TargetAsset: {fileID: 7835009974958887199, guid: 9d14ca2e01f8c5c46a32e31ec448ee16, type: 3}
+  - m_GUID: 6e5d22e0bdeef2f45abaef9b56ce007f
+    m_Address: Assets/Prefabs/UI/Story/StoryComponent.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 3218282827392211146, guid: 6e5d22e0bdeef2f45abaef9b56ce007f, type: 3}
+    m_TargetAsset: {fileID: 3218282827392211146, guid: 6e5d22e0bdeef2f45abaef9b56ce007f, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 11c94751fc2048847bcffed49670c37a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 16875ad1651a5234f809f6395b9648da, type: 2}
+    - {fileID: 11400000, guid: 383b9839be4878e4fa3dcda508e1d6fd, type: 2}

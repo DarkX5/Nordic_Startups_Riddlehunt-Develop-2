@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: testLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5241775466953712752
+  m_GuidHigh: 9460293298395318203
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4874862504474202366
+      m_GuidHigh: 7020454588296232365
+    m_SerializedTextureGuid:
+      m_GuidLow: 16678228943662174257
+      m_GuidHigh: 3717809950806190923
+    m_Size: {x: 3, y: 1.2146342}
+    m_SpecifySize: 1
+    m_Name: rebus_nobackground
+    m_Texture: {fileID: 2800000, guid: f59f5031f8dbe7744b2b37d473509833, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5700761810083162254
+      m_GuidHigh: 9960314105050340029
+    m_SerializedTextureGuid:
+      m_GuidLow: 16718590678315387206
+      m_GuidHigh: 14290726872175040122
+    m_Size: {x: 3, y: 1.2146342}
+    m_SpecifySize: 1
+    m_Name: rebus_low_nobackground
+    m_Texture: {fileID: 2800000, guid: 9e2549465da4e8047a561fee5fdc52c6, type: 3}

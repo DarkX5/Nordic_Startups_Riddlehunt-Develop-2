@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 786332936
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: test_image_reference_library_android
+      Dependencies: {}

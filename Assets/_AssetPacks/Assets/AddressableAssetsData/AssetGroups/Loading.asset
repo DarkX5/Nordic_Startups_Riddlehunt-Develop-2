@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Loading
+  m_EditorClassIdentifier: 
+  m_GroupName: Loading
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 82c9cf519b17e5441b978e49b69b532c
+  m_SerializeEntries:
+  - m_GUID: 150df87f900d7ca4dbabf0d749453743
+    m_Address: Assets/RHPackages/Core/Prefabs/LoadingView/LoadingPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    m_MainAsset: {fileID: 8358907960598907473, guid: 150df87f900d7ca4dbabf0d749453743, type: 3}
+    m_TargetAsset: {fileID: 8358907960598907473, guid: 150df87f900d7ca4dbabf0d749453743, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 11c94751fc2048847bcffed49670c37a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b69659d7a66f41c4fbe0ce35dc8abb2b, type: 2}
+    - {fileID: 11400000, guid: e0504cc43a23d584e8eb10bc2c03e44c, type: 2}
