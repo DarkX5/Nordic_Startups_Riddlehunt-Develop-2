@@ -1,42 +1,52 @@
-using System.Collections;
+// using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AnimatedNarratorController : MonoBehaviour
 {
+    
+#region  Serialized Fields
     [Header("Narration Data")]
-    [SerializeField] private AnimatedNarratorImage narratorImage = null;
-    [SerializeField] private AnimatedNarratorText narratorText = null;
+    [SerializeField] private Canvas narrationCanvas = null;
+    [SerializeField] private GameObject narratorPrefab = null;
+    [SerializeField] private GameObject narratorTextboxPrefab = null;
+    [Tooltip("How much should the character writing speed increase / decrease for each button click")]
+    [SerializeField] private float narrationTextSpeedStep = 0.025f;
+#endregion
 
-    [Header("Buttons")]
-    [SerializeField] private Button narrationNextParagraphButton = null;
-    [SerializeField] private Button narrationPlayAgainButton = null;
-    [SerializeField] private Button narrationFinishGameButton = null;
-    // [SerializeField] private GameObject narrationButtonsContainer = null;
+#region  Internal Vars
+    private AnimatedNarratorImage narratorImage = null;
+    private AnimatedNarratorText narratorText = null;
+    private List<string> textContents = null;
+    private int paragraphIdx;
+    private Vector2 narrationTextSpeedMinMax = new Vector2(0f, 1f);
+    private float textAnimationSpeed;
+#endregion
 
-    [Header("DEBUG vars")]
-    [SerializeField] private List<string> textContents = null;
-    [SerializeField] private int paragraphIdx;
+    public static event Action finishNarration;
 
     private void Start()
     {
-        if (narratorImage == null)
-            narratorImage = FindObjectOfType<AnimatedNarratorImage>();
-        if (narratorText == null)
-            narratorText = FindObjectOfType<AnimatedNarratorText>();
+        // generate narrator & textbox
+        narratorImage = (Instantiate(narratorPrefab, narrationCanvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorImage>(); // FindObjectOfType<AnimatedNarratorImage>();
+        narratorText = (Instantiate(narratorTextboxPrefab, narrationCanvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorText>(); // FindObjectOfType<AnimatedNarratorText>();
 
-        // get mission text data
+        // get & set narration data
         SetNarrationTextsAndSpeed(NarrationTextInitializer.Instance.GetMissionNarration(), NarrationTextInitializer.Instance.GetTextAnimationSpeed());
-
-        // hide finish / replay buttons 
-        narrationFinishGameButton.gameObject.SetActive(false);
-        narrationPlayAgainButton.gameObject.SetActive(false);
 
         // check all needed visual elements are visible
         narratorImage.gameObject.SetActive(true);
         narratorText.gameObject.SetActive(true);
-        narrationNextParagraphButton.gameObject.SetActive(true);
+        
+        // subscribe to narrator text button events
+        AnimatedNarratorText.nextParagraph += NextParagraph;
+        AnimatedNarratorText.playAgain += PlayAgain;
+        AnimatedNarratorText.finishGame += FinishGame;
+
+        // subscribe to narration text speed button events
+        NarrationTextSettings.increaseNarrationSpeed += IncreaseNarrationSpeed;
+        NarrationTextSettings.decreaseNarrationSpeed += DecreaseNarrationSpeed;
 
         paragraphIdx = 0;
         // write first paragraph
@@ -45,12 +55,31 @@ public class AnimatedNarratorController : MonoBehaviour
 
     private void FinishNarration()
     {
-        // show finish / replay buttons 
-        narrationFinishGameButton.gameObject.SetActive(true);
-        narrationPlayAgainButton.gameObject.SetActive(true);
-
-        // hide next paragraph button
-        narrationNextParagraphButton.gameObject.SetActive(false);
+        finishNarration?.Invoke();
+    }
+    private void IncreaseNarrationSpeed()
+    {
+        if (textAnimationSpeed < narrationTextSpeedMinMax.y)
+        {
+            textAnimationSpeed += narrationTextSpeedStep;
+        }
+        else
+        {
+            // set textAnimationSpeed to max value
+            textAnimationSpeed = narrationTextSpeedMinMax.y;
+        }
+    }
+    private void DecreaseNarrationSpeed()
+    {
+        if (textAnimationSpeed > narrationTextSpeedMinMax.x)
+        {
+            textAnimationSpeed -= narrationTextSpeedStep;
+        }
+        else
+        {
+            // set textAnimationSpeed to min value
+            textAnimationSpeed = narrationTextSpeedMinMax.x;
+        }
     }
 
 #region Get Data Methods
@@ -61,17 +90,16 @@ public class AnimatedNarratorController : MonoBehaviour
     public void SetNarrationTextsAndSpeed(List<string> newTextContentList, float newTextAnimationSpeed)
     {
         textContents = newTextContentList;
-        narratorText.SetNarrationSpeed(newTextAnimationSpeed);
-        // textAnimationSpeed = newTextAnimationSpeed;
+        textAnimationSpeed = newTextAnimationSpeed;
     }
 #endregion
 
-    #region UI Called Methods
+#region UI Called Methods
     public void NextParagraph()
-    { // called from UI 
-        if (textContents == null || textContents.Count < 1) { return; }
+    {
+        if (textContents == null || paragraphIdx >= textContents.Count) { return; }
 
-        narratorText.WriteText(textContents[paragraphIdx]);
+        narratorText.WriteText(textContents[paragraphIdx], textAnimationSpeed);
         paragraphIdx += 1;
 
         // activate finish narratio UI when reaching the last paragraph 
@@ -82,14 +110,10 @@ public class AnimatedNarratorController : MonoBehaviour
     }
 
     public void FinishGame()
-    { // called from UI 
+    {
         /* v TODO - 4 editor testing - remove before prod for quit speedup v */
         narratorImage.gameObject.SetActive(false);
         narratorText.gameObject.SetActive(false);
-
-        // hide finish / replay buttons 
-        narrationFinishGameButton.gameObject.SetActive(false);
-        narrationPlayAgainButton.gameObject.SetActive(false);
         /* ^ TODO - 4 editor testing - remove before prod for quit speedup ^ */
 
         Application.Quit();
@@ -97,17 +121,10 @@ public class AnimatedNarratorController : MonoBehaviour
 
 
     public void PlayAgain()
-    { // called from UI 
-        // hide finish / replay buttons 
-        narrationFinishGameButton.gameObject.SetActive(false);
-        narrationPlayAgainButton.gameObject.SetActive(false);
-
-        // show next paragraph button
-        narrationNextParagraphButton.gameObject.SetActive(true);
-
+    {
         paragraphIdx = 0;
         NextParagraph();
     }
-    #endregion
+#endregion
 
 }

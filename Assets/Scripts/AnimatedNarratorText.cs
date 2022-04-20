@@ -1,34 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class AnimatedNarratorText : MonoBehaviour
 {
+#region Serialized Fields Values
     [Header("Text Config")]
     // [SerializeField] private GameObject narrationBgImage = null;
     [SerializeField] private AudioSource narrationTextAudio = null;
     [SerializeField] private TMP_Text narrationText = null;
     [SerializeField] private float timePerCharacter = 1f;
-    [SerializeField] private float narrationTextSpeedStep = 0.025f;
+    [SerializeField] private bool enableTextWriting = true;
     [SerializeField] private bool enableTextBouncyness = false;
     [SerializeField] private float bounceDistance = 25f;
     [SerializeField] private float bounceDuration = 0.5f;
 
-    [Header("DEBUG vars (Auto Set)")]
-    [SerializeField] private Vector2 narrationTextSpeedMinMax = new Vector2(0f, 1f);
-    [SerializeField] private string textToWrite;
-    [SerializeField] private int charactedIdx;
-    [SerializeField] private float timer;
-    [SerializeField] private bool isBouncing = false;
-    Vector3 textboxStartPosition;
-    float timeElapsed;
-    bool bouncingUp = false;
-    float bouncingValueLerp;
-    private bool isFinishedWriting = false;
+    [Header("Buttons")]
+    [SerializeField] private Button narrationNextParagraphButton = null;
+    [SerializeField] private Button narrationPlayAgainButton = null;
+    [SerializeField] private Button narrationFinishGameButton = null;
+#endregion
 
-    public bool IsFinishedWriting { get { return isFinishedWriting; } }
+#region Internal Vars
+    private string textToWrite;
+    private int charactedIdx;
+    private float timer;
+    private bool isBouncing = false;
+    private Vector3 textboxStartPosition;
+    private float timeElapsed;
+    private bool bouncingUp = false;
+    private float bouncingValueLerp;
+    private bool isNarrationFinished = false;
+    private bool isFinishedWriting = true;
+#endregion
+
+#region  Event Actions
+    // button subscription events
+    public static event Action nextParagraph;
+    public static event Action playAgain;
+    public static event Action finishGame;
+    public static event Action writingStarted;
+    public static event Action writingFinished;
+#endregion
 
     // Start is called before the first frame update
     void Start()
@@ -36,48 +50,72 @@ public class AnimatedNarratorText : MonoBehaviour
         if (narrationText == null)
             narrationText = GetComponentInChildren<TMP_Text>();
         if (narrationTextAudio == null)
-            narrationTextAudio = GetComponentInChildren<AudioSource>();
+            narrationTextAudio = GetComponent<AudioSource>(); // GetComponentInChildren<AudioSource>();
 
         textboxStartPosition = transform.position;
-        // narrationBgImage = GetComponentInChildren<Image
+
+        // hide finish / replay buttons 
+        narrationFinishGameButton.gameObject.SetActive(false);
+        narrationPlayAgainButton.gameObject.SetActive(false);
+
+        // check all needed visual elements are visible
+        narrationNextParagraphButton.gameObject.SetActive(true);
+
+        // subscribe to the narration finished event
+        AnimatedNarratorController.finishNarration += FinishNarration;
     }
 
     private void Update()
     {
         // once the text is written stop text updates and start bouncing :) 
-        if (narrationText == null || textToWrite.Length < charactedIdx)
+        if (textToWrite == null || textToWrite.Length < charactedIdx)
         {
             BounceText();
             // pause playing narrator mumble audio (pause instead of stop makes short clips seem longer)
             if (narrationTextAudio.isPlaying)
                 narrationTextAudio.Pause();
 
-            isFinishedWriting = true;
+            if (!isFinishedWriting) {
+                isFinishedWriting = true;
+                writingFinished?.Invoke();
+            }
+
+            if (isNarrationFinished)
+                UpdateNarrationFinishUI();
             return;
         }
-
+        
         transform.position = textboxStartPosition;
+
         // start playing narrator mumble audio
         if (!narrationTextAudio.isPlaying)
             narrationTextAudio.Play();
 
+        // write all text at once if writing is disabled
+        if (!enableTextWriting) {
+            narrationText.text = textToWrite;
+            charactedIdx = textToWrite.Length;
+        }
+
+        // check cooldown for typed character
         if (timer <= 0f)
         {
-            // write next character
+            // write next character & reset timer
             timer += timePerCharacter;
             narrationText.text = textToWrite.Substring(0, charactedIdx);
             charactedIdx += 1;
         }
         else
         {
+            // cooldown not complete -> continue counting
             timer -= Time.deltaTime;
         }
-        isFinishedWriting = false;
     }
     private void BounceText()
     {
         if (!enableTextBouncyness) { return; }
 
+        // Lerp textbox position either up or down depending on distance to end point (textboxStartPosition.y - bounceDistance)
         if (timeElapsed < bounceDuration)
         {
             if(bouncingUp) {
@@ -92,46 +130,96 @@ public class AnimatedNarratorText : MonoBehaviour
             bouncingUp = !bouncingUp;
             timeElapsed = 0f;
         }
-
-        // throw new NotImplementedException();
     }
-
-    public void WriteText(string newTextToWrite)
+    private void UpdateNarrationFinishUI()
     {
-        textToWrite = newTextToWrite;
-        charactedIdx = 0;
+        // show finish / replay buttons 
+        narrationFinishGameButton.gameObject.SetActive(true);
+        narrationPlayAgainButton.gameObject.SetActive(true);
+
+        // hide next paragraph button
+        narrationNextParagraphButton.gameObject.SetActive(false);
     }
+
+#region Subscriptions Methods
+    private void FinishNarration()
+    {
+        isNarrationFinished = true;
+    }
+#endregion
+
+#region Public Methods
     public void WriteText(string newTextToWrite, float newTimePerCharacter)
     {
         textToWrite = newTextToWrite;
         timePerCharacter = newTimePerCharacter;
         charactedIdx = 0;
+        // set text writing to "Instant" when speed reaches 0 
+        if (timePerCharacter <= 0.0001f) {
+            enableTextWriting = false;
+        } else {
+            enableTextWriting = true;
+        }
+
+        if (isFinishedWriting)
+        {
+            isFinishedWriting = false;
+            writingStarted?.Invoke();
+        }
     }
 
-    public void SetNarrationSpeed(float newTimePerCharacter)
+    // public void WriteText(string newTextToWrite)
+    // {
+    //     textToWrite = newTextToWrite;
+    //     charactedIdx = 0;
+
+    //     if (isFinishedWriting)
+    //     {
+    //         isFinishedWriting = false;
+    //         writingStarted?.Invoke();
+    //     }
+    // }
+
+    // public void SetNarrationSpeed(float newTimePerCharacter)
+    // {
+    //     timePerCharacter = newTimePerCharacter;
+    // }
+    #endregion
+
+    #region Button Events
+    public void NextParagraph() {
+        if(isNarrationFinished) {
+            narrationText.text = textToWrite;
+            charactedIdx = textToWrite.Length;
+            return;
+        }
+            
+        nextParagraph?.Invoke();
+    }
+    public void PlayAgain()
     {
-        timePerCharacter = newTimePerCharacter;
+        // hide finish / replay buttons 
+        narrationFinishGameButton.gameObject.SetActive(false);
+        narrationPlayAgainButton.gameObject.SetActive(false);
+
+        // show next paragraph button
+        narrationNextParagraphButton.gameObject.SetActive(true);
+
+        // reset finish narration
+        isNarrationFinished = false;
+
+        playAgain?.Invoke();
     }
-    public void IncreaseNarrationSpeed()
-    { // called from UI
-        if (timePerCharacter < narrationTextSpeedMinMax.y)
-        {
-            timePerCharacter += narrationTextSpeedStep;
-        }
-        else
-        {
-            timePerCharacter = narrationTextSpeedMinMax.y;
-        }
+    public void FinishGame()
+    {
+        /* v TODO - 4 editor testing - remove before prod for quit speedup v */
+        // hide finish / replay buttons 
+        narrationFinishGameButton.gameObject.SetActive(false);
+        narrationPlayAgainButton.gameObject.SetActive(false);
+        /* ^ TODO - 4 editor testing - remove before prod for quit speedup ^ */
+        
+        finishGame?.Invoke();
     }
-    public void DecreaseNarrationSpeed()
-    { // called from UI
-        if (timePerCharacter > narrationTextSpeedMinMax.x)
-        {
-            timePerCharacter -= narrationTextSpeedStep;
-        }
-        else
-        {
-            timePerCharacter = narrationTextSpeedMinMax.x;
-        }
-    }
+#endregion
+
 }

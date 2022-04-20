@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2074129907426044726}
   - component: {fileID: 597476143405353216}
+  - component: {fileID: 5897169002083206013}
   m_Layer: 5
   m_Name: Narrator
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290ad423c2f5a40b0727d96e95c493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5897169002083206013
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074129907426044681}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3dca28594779714dba3744af49698c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

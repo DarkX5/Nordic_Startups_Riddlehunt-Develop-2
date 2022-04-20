@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatedNarratorImage : MonoBehaviour
 {
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    [SerializeField] private string animatorBoolParameterName = "narratorIsBreathing";
+    [Header("DEBUG - Auto Set")]
+    [SerializeField] Animator narratorAnimator = null;
+    [SerializeField] bool narratorIsBreathing = false;
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    // Start is called before the first frame update
+    void Start()
+    {
+        narratorAnimator = GetComponentInChildren<Animator>();
+
+        // subscribe to text events
+        AnimatedNarratorText.writingStarted += StartBreathing;
+        AnimatedNarratorText.writingFinished += StopBreathing;
+    }
+
+    private void StartBreathing() {
+        narratorAnimator.SetBool(animatorBoolParameterName, true);
+    }
+    private void StopBreathing()
+    {
+        narratorAnimator.SetBool(animatorBoolParameterName, false);
+    }
+
 }
