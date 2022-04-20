@@ -572,7 +572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 550, y: 500}
+  m_AnchoredPosition: {x: 400, y: 500}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4739014991124166302
@@ -991,6 +991,7 @@ MonoBehaviour:
   enableTextWriting: 1
   enableTextBouncyness: 1
   narrationTextContainer: {fileID: 4739014991970635999}
+  bounceStartPositionY: 25
   bounceDistance: 25
   bounceDuration: 0.5
   narrationNextParagraphButton: {fileID: 4739014991337258940}
