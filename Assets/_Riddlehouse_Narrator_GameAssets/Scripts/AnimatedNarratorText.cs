@@ -13,6 +13,7 @@ public class AnimatedNarratorText : MonoBehaviour
     [SerializeField] private float timePerCharacter = 1f;
     [SerializeField] private bool enableTextWriting = true;
     [SerializeField] private bool enableTextBouncyness = false;
+    [SerializeField] private Transform narrationTextContainer = null;
     [SerializeField] private float bounceDistance = 25f;
     [SerializeField] private float bounceDuration = 0.5f;
 
@@ -52,7 +53,7 @@ public class AnimatedNarratorText : MonoBehaviour
         if (narrationTextAudio == null)
             narrationTextAudio = GetComponent<AudioSource>(); // GetComponentInChildren<AudioSource>();
 
-        textboxStartPosition = transform.position;
+        textboxStartPosition = narrationTextContainer.transform.position;
 
         // hide finish / replay buttons 
         narrationFinishGameButton.gameObject.SetActive(false);
@@ -84,8 +85,8 @@ public class AnimatedNarratorText : MonoBehaviour
                 UpdateNarrationFinishUI();
             return;
         }
-        
-        transform.position = textboxStartPosition;
+
+        narrationTextContainer.transform.position = textboxStartPosition;
 
         // start playing narrator mumble audio
         if (!narrationTextAudio.isPlaying)
@@ -125,7 +126,11 @@ public class AnimatedNarratorText : MonoBehaviour
                 bouncingValueLerp = Mathf.Lerp(textboxStartPosition.y, textboxStartPosition.y - bounceDistance, timeElapsed / bounceDuration);
                 timeElapsed += Time.deltaTime;
             }
-            transform.position = new Vector3(transform.position.x, bouncingValueLerp, transform.position.y);
+
+            // "bounce" container
+            narrationTextContainer.transform.position = new Vector3(narrationTextContainer.transform.position.x, 
+                                                                    bouncingValueLerp, 
+                                                                    narrationTextContainer.transform.position.y);
         } else {
             bouncingUp = !bouncingUp;
             timeElapsed = 0f;
