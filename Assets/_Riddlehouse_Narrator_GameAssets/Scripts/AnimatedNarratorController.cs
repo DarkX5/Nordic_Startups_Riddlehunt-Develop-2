@@ -31,9 +31,13 @@ public class AnimatedNarratorController : MonoBehaviour
 
     private void Start()
     {
-        // generate narrator & textbox
-        narratorImage = (Instantiate(narratorPrefab, narrationCanvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorImage>(); // FindObjectOfType<AnimatedNarratorImage>();
-        narratorText = (Instantiate(narratorTextboxPrefab, narrationCanvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorText>(); // FindObjectOfType<AnimatedNarratorText>();
+        // generate canvases (better performance if split up), narrator & textbox
+        var canvas = (Instantiate(narrationCanvas.gameObject) as GameObject).transform.GetComponent<Canvas>();
+        canvas.sortingOrder = 1;
+        narratorText = (Instantiate(narratorTextboxPrefab, canvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorText>(); // FindObjectOfType<AnimatedNarratorText>();
+        canvas = (Instantiate(narrationCanvas.gameObject) as GameObject).transform.GetComponent<Canvas>();
+        canvas.sortingOrder = 2;
+        narratorImage = (Instantiate(narratorPrefab, canvas.transform) as GameObject).transform.GetComponent<AnimatedNarratorImage>(); // FindObjectOfType<AnimatedNarratorImage>();
 
         // get & set narration data
         SetNarrationTextsAndSpeed(NarrationTextInitializer.Instance.GetMissionNarration(), NarrationTextInitializer.Instance.GetTextAnimationSpeed());

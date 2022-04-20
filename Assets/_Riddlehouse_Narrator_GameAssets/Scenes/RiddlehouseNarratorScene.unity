@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8bc35946e09194aa3ff421e7feb035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  narrationCanvas: {fileID: 613407373}
+  narrationCanvas: {fileID: 5701346080072867427, guid: e3667e2dd11a7aa479c2a5610d3f0d5d, type: 3}
   narratorPrefab: {fileID: 2074129907426044681, guid: cfcb926f8f9e91a4b922cc161476e19c, type: 3}
   narratorTextboxPrefab: {fileID: 4739014991546333313, guid: cef032959c16977448e1b4283655265f, type: 3}
   narrationTextSpeedStep: 0.025
