@@ -13,7 +13,8 @@ public class AnimatedNarratorText : MonoBehaviour
     [SerializeField] private float timePerCharacter = 1f;
     [SerializeField] private bool enableTextWriting = true;
     [SerializeField] private bool enableTextBouncyness = false;
-    [SerializeField] private Transform narrationTextContainer = null;
+    [SerializeField] private RectTransform narrationTextContainer = null;
+    [SerializeField] private float bounceStartPositionY = 25f;
     [SerializeField] private float bounceDistance = 25f;
     [SerializeField] private float bounceDuration = 0.5f;
 
@@ -28,7 +29,7 @@ public class AnimatedNarratorText : MonoBehaviour
     private int charactedIdx;
     private float timer;
     private bool isBouncing = false;
-    private Vector3 textboxStartPosition;
+    private RectTransform textboxStartPosition;
     private float timeElapsed;
     private bool bouncingUp = false;
     private float bouncingValueLerp;
@@ -53,7 +54,7 @@ public class AnimatedNarratorText : MonoBehaviour
         if (narrationTextAudio == null)
             narrationTextAudio = GetComponent<AudioSource>(); // GetComponentInChildren<AudioSource>();
 
-        textboxStartPosition = narrationTextContainer.transform.position;
+        // textboxStartPosition = narrationTextContainer;
 
         // hide finish / replay buttons 
         narrationFinishGameButton.gameObject.SetActive(false);
@@ -86,7 +87,7 @@ public class AnimatedNarratorText : MonoBehaviour
             return;
         }
 
-        narrationTextContainer.transform.position = textboxStartPosition;
+        // narrationTextContainer = textboxStartPosition;
 
         // start playing narrator mumble audio
         if (!narrationTextAudio.isPlaying)
@@ -120,17 +121,19 @@ public class AnimatedNarratorText : MonoBehaviour
         if (timeElapsed < bounceDuration)
         {
             if(bouncingUp) {
-                bouncingValueLerp = Mathf.Lerp(textboxStartPosition.y - bounceDistance, textboxStartPosition.y, timeElapsed / bounceDuration);
+                // bouncingValueLerp = Mathf.Lerp(textboxStartPosition.rect.y - bounceDistance, textboxStartPosition.rect.y, timeElapsed / bounceDuration);
+                bouncingValueLerp = Mathf.Lerp(bounceStartPositionY -bounceDistance, bounceStartPositionY, timeElapsed / bounceDuration);
                 timeElapsed += Time.deltaTime;
             } else {
-                bouncingValueLerp = Mathf.Lerp(textboxStartPosition.y, textboxStartPosition.y - bounceDistance, timeElapsed / bounceDuration);
+                // bouncingValueLerp = Mathf.Lerp(textboxStartPosition.rect.y, textboxStartPosition.rect.y - bounceDistance, timeElapsed / bounceDuration);
+                bouncingValueLerp = Mathf.Lerp(bounceStartPositionY, bounceStartPositionY -bounceDistance, timeElapsed / bounceDuration);
                 timeElapsed += Time.deltaTime;
             }
 
             // "bounce" container
             narrationTextContainer.transform.position = new Vector3(narrationTextContainer.transform.position.x, 
                                                                     bouncingValueLerp, 
-                                                                    narrationTextContainer.transform.position.y);
+                                                                    narrationTextContainer.transform.position.z);
         } else {
             bouncingUp = !bouncingUp;
             timeElapsed = 0f;
