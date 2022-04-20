@@ -3,9 +3,8 @@ using UnityEngine;
 public class AnimatedNarratorImage : MonoBehaviour
 {
     [SerializeField] private string animatorBoolParameterName = "narratorIsBreathing";
-    [Header("DEBUG - Auto Set")]
-    [SerializeField] Animator narratorAnimator = null;
-    [SerializeField] bool narratorIsBreathing = false;
+    Animator narratorAnimator = null;
+    bool narratorIsBreathing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +17,11 @@ public class AnimatedNarratorImage : MonoBehaviour
     }
 
     private void StartBreathing() {
-        narratorAnimator.SetBool(animatorBoolParameterName, true);
+        narratorAnimator?.SetBool(animatorBoolParameterName, true);
     }
     private void StopBreathing()
     {
-        narratorAnimator.SetBool(animatorBoolParameterName, false);
+        narratorAnimator?.SetBool(animatorBoolParameterName, false);
     }
 
 }

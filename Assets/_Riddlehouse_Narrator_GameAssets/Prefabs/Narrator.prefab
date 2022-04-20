@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79290ad423c2f5a40b0727d96e95c493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorBoolParameterName: narratorIsBreathing
 --- !u!95 &5897169002083206013
 Animator:
   serializedVersion: 3
