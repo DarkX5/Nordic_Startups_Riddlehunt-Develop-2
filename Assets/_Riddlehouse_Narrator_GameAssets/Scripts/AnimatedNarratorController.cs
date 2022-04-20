@@ -24,7 +24,10 @@ public class AnimatedNarratorController : MonoBehaviour
     private float textAnimationSpeed;
 #endregion
 
+#region  Event Actions
     public static event Action finishNarration;
+    public static event Action<int> writingSpeedValueUpdate;
+#endregion
 
     private void Start()
     {
@@ -68,7 +71,9 @@ public class AnimatedNarratorController : MonoBehaviour
             // set textAnimationSpeed to max value
             textAnimationSpeed = narrationTextSpeedMinMax.y;
         }
+        CallTextSpeedUIUpdates();
     }
+
     private void DecreaseNarrationSpeed()
     {
         if (textAnimationSpeed > narrationTextSpeedMinMax.x)
@@ -80,17 +85,20 @@ public class AnimatedNarratorController : MonoBehaviour
             // set textAnimationSpeed to min value
             textAnimationSpeed = narrationTextSpeedMinMax.x;
         }
+        CallTextSpeedUIUpdates();
+    }
+
+    private void CallTextSpeedUIUpdates()
+    {
+        writingSpeedValueUpdate?.Invoke(Mathf.RoundToInt(textAnimationSpeed / narrationTextSpeedStep));
     }
 
 #region Get Data Methods
-    public void SetNarrationTexts(List<string> newTextContentList)
-    {
-        textContents = newTextContentList;
-    }
     public void SetNarrationTextsAndSpeed(List<string> newTextContentList, float newTextAnimationSpeed)
     {
         textContents = newTextContentList;
         textAnimationSpeed = newTextAnimationSpeed;
+        CallTextSpeedUIUpdates();
     }
 #endregion
 
@@ -118,7 +126,6 @@ public class AnimatedNarratorController : MonoBehaviour
 
         Application.Quit();
     }
-
 
     public void PlayAgain()
     {

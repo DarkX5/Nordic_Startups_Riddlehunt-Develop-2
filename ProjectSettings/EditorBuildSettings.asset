@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RiddlehouseNarratorScene.unity
+    path: Assets/_Riddlehouse_Narrator_GameAssets/Scenes/RiddlehouseNarratorScene.unity
     guid: 37bceb77604a92a44832982bacce7552
   - enabled: 0
     path: Assets/_AssetPacks/Assets/Scenes/Sprint1 Scene.unity
